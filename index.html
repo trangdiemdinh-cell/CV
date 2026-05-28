@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinh Trang Diem - Academic Portfolio</title>
+    <meta name="description" content="Academic Portfolio of Dinh Trang Diem - Researcher in Fisheries Ecology and Aquatic Resources Management.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2E7D32',
+                        primaryDark: '#1b5e20',
+                        primaryLight: '#4caf50',
+                        bgLight: '#f8fafc',
+                        textDark: '#1e293b',
+                        textMuted: '#64748b'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #334155; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Merriweather', serif; color: #0f172a; }
+        
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Timeline Styling */
+        .timeline-container { position: relative; padding-left: 2rem; }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0.5rem;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+        .timeline-item { position: relative; z-index: 1; margin-bottom: 2rem; }
+        .timeline-icon {
+            position: absolute;
+            left: -2rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: #2E7D32;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px #e2e8f0;
+            margin-top: 0.3rem;
+        }
+
+        /* Hero Image Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Sticky Navbar */
+        #navbar { transition: all 0.3s ease; }
+        .nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2E7D32; }
+    </style>
+</head>
+<body class="bg-bgLight overflow-x-hidden antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 bg-white/90 backdrop-blur shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="font-serif font-bold text-xl text-primary tracking-wide">Dinh Trang Diem</a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="desktop-link text-textDark hover:text-primary transition font-medium text-sm border-b-2 border-transparent hover:border-primary px-1 py-5">Home</a>
+                    <a href="#about" class="desktop-link text-textDark hover:text-primary transition font-medium text-sm border-b-2 border-transparent hover:border-primary px-1 py-5">About</a>
+                    <a href="#experience" class="desktop-link text-textDark hover:text-primary transition font-medium text-sm border-b-2 border-transparent hover:border-primary px-1 py-5">Experience</a>
+                    <a href="#education" class="desktop-link text-textDark hover:text-primary transition font-medium text-sm border-b-2 border-transparent hover:border-primary px-1 py-5">Education</a>
+                    <a href="#projects" class="desktop-link text-textDark hover:text-primary transition font-medium text-sm border-b-2 border-transparent hover:border-primary px-1 py-5">Projects</a>
+                    <a href="#publications" class="desktop-link text-textDark hover:text-primary transition font-medium text-sm border-b-2 border-transparent hover:border-primary px-1 py-5">Publications</a>
+                    <a href="#contact" class="desktop-link text-textDark hover:text-primary transition font-medium text-sm border-b-2 border-transparent hover:border-primary px-1 py-5">Contact</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-textDark hover:text-primary focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-lg absolute w-full">
+            <div class="px-4 pt-2 pb-4 space-y-1 text-center">
+                <a href="#home" class="mobile-link block px-3 py-2 text-base font-medium text-textDark hover:text-primary hover:bg-gray-50 rounded-md">Home</a>
+                <a href="#about" class="mobile-link block px-3 py-2 text-base font-medium text-textDark hover:text-primary hover:bg-gray-50 rounded-md">About</a>
+                <a href="#experience" class="mobile-link block px-3 py-2 text-base font-medium text-textDark hover:text-primary hover:bg-gray-50 rounded-md">Experience</a>
+                <a href="#education" class="mobile-link block px-3 py-2 text-base font-medium text-textDark hover:text-primary hover:bg-gray-50 rounded-md">Education</a>
+                <a href="#projects" class="mobile-link block px-3 py-2 text-base font-medium text-textDark hover:text-primary hover:bg-gray-50 rounded-md">Projects</a>
+                <a href="#publications" class="mobile-link block px-3 py-2 text-base font-medium text-textDark hover:text-primary hover:bg-gray-50 rounded-md">Publications</a>
+                <a href="#contact" class="mobile-link block px-3 py-2 text-base font-medium text-textDark hover:text-primary hover:bg-gray-50 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 pb-12 bg-gradient-to-br from-green-50 to-white relative overflow-hidden">
+        <!-- Background Decorative Elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-green-100 opacity-50 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-blue-50 opacity-50 blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- Text Content -->
+                <div class="md:w-3/5 text-center md:text-left reveal">
+                    <p class="text-primary font-semibold tracking-wider uppercase mb-2">Academic Portfolio</p>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                        Dinh Trang Diem
+                    </h1>
+                    <h2 class="text-xl md:text-2xl text-textMuted font-medium mb-6 font-serif">
+                        Research Scientist in Fisheries Ecology & Aquatic Resources
+                    </h2>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed max-w-2xl">
+                        A dedicated and detail-oriented Research Scientist with extensive expertise in Fisheries Ecology, Aquaculture, and Aquatic Resources Management. With a strong focus on the Mekong Delta's aquatic ecosystems, my research encompasses fish migration patterns, river ecology, and biodiversity conservation to develop sustainable fisheries management strategies.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#contact" class="px-8 py-3 rounded-full bg-primary text-white font-medium hover:bg-primaryDark transition-colors shadow-lg hover:shadow-xl text-center flex items-center justify-center gap-2">
+                            <i class="fas fa-envelope"></i> Contact Me
+                        </a>
+                        <a href="#" class="px-8 py-3 rounded-full bg-white text-primary border-2 border-primary font-medium hover:bg-green-50 transition-colors shadow-sm text-center flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                </div>
+                <!-- Profile Image / Placeholder -->
+                <div class="md:w-2/5 flex justify-center reveal">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-8 border-white shadow-2xl overflow-hidden floating">
+                            <img src="https://ui-avatars.com/api/?name=Dinh+Trang+Diem&background=2E7D32&color=fff&size=512&font-size=0.33" alt="Dinh Trang Diem" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Floating badge -->
+                        <div class="absolute -bottom-4 -right-4 bg-white p-4 rounded-xl shadow-lg border border-gray-100 flex items-center gap-3 floating" style="animation-delay: 1.5s;">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-primary">
+                                <i class="fas fa-microscope text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Research Institute</p>
+                                <p class="font-bold text-gray-800">RIA2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover my scientific background, research interests, and core competencies in aquatic ecosystem conservation.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Info -->
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold mb-6 font-serif">Scientific Background & Research Interests</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        My scientific journey is deeply rooted in understanding and preserving aquatic ecosystems. Over the years, I have actively participated in numerous environmental and aquatic monitoring programs, focusing on ecosystem services and human impacts on riverine ecology.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-700 font-medium">Aquaculture</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-700 font-medium">Fisheries Ecology</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-700 font-medium">Aquatic Biodiversity</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-700 font-medium">Fish Migration & Passage</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-700 font-medium">River Ecology</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span class="text-gray-700 font-medium">Environmental Monitoring</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-2 gap-6 reveal">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-center">
+                        <i class="fas fa-calendar-alt text-4xl text-primary/80 mb-4"></i>
+                        <h4 class="text-3xl font-bold text-gray-800 mb-1">7+</h4>
+                        <p class="text-sm text-gray-500 font-medium uppercase tracking-wide">Years Experience</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-center">
+                        <i class="fas fa-project-diagram text-4xl text-primary/80 mb-4"></i>
+                        <h4 class="text-3xl font-bold text-gray-800 mb-1">15+</h4>
+                        <p class="text-sm text-gray-500 font-medium uppercase tracking-wide">Research Projects</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-center">
+                        <i class="fas fa-file-alt text-4xl text-primary/80 mb-4"></i>
+                        <h4 class="text-3xl font-bold text-gray-800 mb-1">8+</h4>
+                        <p class="text-sm text-gray-500 font-medium uppercase tracking-wide">Publications & Reports</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-center">
+                        <i class="fas fa-users text-4xl text-primary/80 mb-4"></i>
+                        <h4 class="text-3xl font-bold text-gray-800 mb-1">10+</h4>
+                        <p class="text-sm text-gray-500 font-medium uppercase tracking-wide">Conferences</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold mb-4">Professional Experience</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden reveal">
+                <div class="bg-primary px-8 py-6 text-white">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-1 text-white">Researcher</h3>
+                            <p class="text-green-100 text-lg">Research Institute for Aquaculture No.2 (RIA2)</p>
+                        </div>
+                        <div class="bg-white/20 px-4 py-2 rounded-lg font-medium text-sm border border-white/30 backdrop-blur-sm">
+                            <i class="far fa-calendar-alt mr-2"></i>Oct 2017 – Present
+                        </div>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="mb-6 flex flex-col sm:flex-row gap-4 text-gray-600 text-sm border-b border-gray-100 pb-6">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-building text-primary"></i>
+                            <span>Division of Fisheries Ecology and Aquatic Resources</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                            <span>Ho Chi Minh City, Vietnam</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-globe text-primary"></i>
+                            <a href="http://www.vienthuysan2.org.vn" target="_blank" class="hover:text-primary transition-colors">www.vienthuysan2.org.vn</a>
+                        </div>
+                    </div>
+                    
+                    <h4 class="font-serif font-bold text-lg mb-4 text-gray-800">Main Responsibilities</h4>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-primary mt-1 text-sm"></i>
+                            <span class="text-gray-700">Fisheries assessment and management studies</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-primary mt-1 text-sm"></i>
+                            <span class="text-gray-700">Fish migration and fish passage monitoring</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-primary mt-1 text-sm"></i>
+                            <span class="text-gray-700">Human impact assessment on aquatic ecosystems</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-primary mt-1 text-sm"></i>
+                            <span class="text-gray-700">Ecosystem services assessment</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-primary mt-1 text-sm"></i>
+                            <span class="text-gray-700">Riverine ecology research & biodiversity conservation</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-primary mt-1 text-sm"></i>
+                            <span class="text-gray-700">Rural nutrition and fisheries sustainability studies</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-primary mt-1 text-sm"></i>
+                            <span class="text-gray-700">Field sampling, surveying, and fish taxonomy</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-arrow-right text-primary mt-1 text-sm"></i>
+                            <span class="text-gray-700">Data analysis and scientific reporting</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section id="education" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold mb-4">Education & Certifications</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Education Timeline -->
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold mb-8 font-serif flex items-center gap-3">
+                        <i class="fas fa-user-graduate text-primary"></i> Academic Background
+                    </h3>
+                    <div class="timeline-container">
+                        <!-- Master -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon"></div>
+                            <div class="bg-slate-50 p-6 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-bold text-gray-800 text-lg">Master of Aquaculture</h4>
+                                    <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded font-medium">Uncompleted</span>
+                                </div>
+                                <p class="text-primary font-medium mb-1">Can Tho University</p>
+                                <p class="text-sm text-gray-500 mb-2"><i class="far fa-calendar-alt mr-2"></i>Sep 2025 – Sep 2027</p>
+                                <p class="text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-gray-400"></i>Can Tho City, Vietnam</p>
+                            </div>
+                        </div>
+                        <!-- Bachelor -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon"></div>
+                            <div class="bg-slate-50 p-6 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-bold text-gray-800 text-lg">Bachelor of Fisheries Resources Management</h4>
+                                    <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded font-medium">Completed</span>
+                                </div>
+                                <p class="text-primary font-medium mb-1">Can Tho University</p>
+                                <p class="text-sm text-gray-500 mb-2"><i class="far fa-calendar-alt mr-2"></i>Aug 2012 – Feb 2016</p>
+                                <p class="text-sm font-medium text-gray-700">GPA: 3.2/4.0 (Very Good)</p>
+                            </div>
+                        </div>
+                        <!-- High School -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon"></div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-gray-100">
+                                <h4 class="font-bold text-gray-800">Thoi Binh High School</h4>
+                                <p class="text-sm text-gray-500"><i class="far fa-calendar-alt mr-2"></i>2009 – 2012</p>
+                            </div>
+                        </div>
+                        <!-- Secondary -->
+                        <div class="timeline-item">
+                            <div class="timeline-icon"></div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-gray-100">
+                                <h4 class="font-bold text-gray-800">Khanh Thoi Secondary School</h4>
+                                <p class="text-sm text-gray-500"><i class="far fa-calendar-alt mr-2"></i>2005 – 2009</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English & Training -->
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold mb-8 font-serif flex items-center gap-3">
+                        <i class="fas fa-language text-primary"></i> English Proficiency
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+                        <div class="bg-white border border-gray-200 p-5 rounded-xl hover:border-primary hover:shadow-md transition-all">
+                            <div class="text-primary mb-2"><i class="fas fa-certificate text-2xl"></i></div>
+                            <h4 class="font-bold text-gray-800 mb-1">VSTEP level 4 (B2)</h4>
+                            <p class="text-sm text-gray-600">Can Tho University</p>
+                            <p class="text-xs text-gray-400 mt-2">January 2026</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 p-5 rounded-xl hover:border-primary hover:shadow-md transition-all">
+                            <div class="text-primary mb-2"><i class="fas fa-certificate text-2xl"></i></div>
+                            <h4 class="font-bold text-gray-800 mb-1">IELTS 5.0</h4>
+                            <p class="text-sm text-gray-600">IDP Ho Chi Minh City</p>
+                            <p class="text-xs text-gray-400 mt-2">April 2025</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 p-5 rounded-xl hover:border-primary hover:shadow-md transition-all">
+                            <div class="text-primary mb-2"><i class="fas fa-award text-2xl"></i></div>
+                            <h4 class="font-bold text-gray-800 mb-1">Level B Certificate</h4>
+                            <p class="text-sm text-gray-600">Can Tho Univ of Tech</p>
+                            <p class="text-xs text-gray-400 mt-2">August 2016</p>
+                        </div>
+                        <div class="bg-white border border-gray-200 p-5 rounded-xl hover:border-primary hover:shadow-md transition-all">
+                            <div class="text-primary mb-2"><i class="fas fa-award text-2xl"></i></div>
+                            <h4 class="font-bold text-gray-800 mb-1">Level A Certificate</h4>
+                            <p class="text-sm text-gray-600">Can Tho University</p>
+                            <p class="text-xs text-gray-400 mt-2">April 2015</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-6 font-serif flex items-center gap-3">
+                        <i class="fas fa-chalkboard-teacher text-primary"></i> Training Courses
+                    </h3>
+                    <div class="bg-slate-50 rounded-xl p-6 border border-gray-100">
+                        <ul class="space-y-4 relative">
+                            <!-- Training items -->
+                            <li class="flex gap-4">
+                                <div class="mt-1 bg-primary text-white text-xs px-2 py-1 rounded h-6 whitespace-nowrap">2024</div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Junior Riparian Professionals Training Program</p>
+                                    <p class="text-sm text-gray-500">MRC Secretariat, Lao PDR</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="mt-1 bg-primary text-white text-xs px-2 py-1 rounded h-6 whitespace-nowrap">2024</div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Fisheries Monitoring & Capture Fisheries Assessment</p>
+                                    <p class="text-sm text-gray-500">Ho Chi Minh City & Lao PDR</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="mt-1 bg-primary text-white text-xs px-2 py-1 rounded h-6 whitespace-nowrap">2024</div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Riverine Plastic Monitoring Programme</p>
+                                    <p class="text-sm text-gray-500">Can Tho</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="mt-1 bg-primary text-white text-xs px-2 py-1 rounded h-6 whitespace-nowrap">2022</div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Fish Larvae Monitoring & Fish Tagging</p>
+                                    <p class="text-sm text-gray-500">Thailand & Laos</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <div class="mt-1 bg-primary/70 text-white text-xs px-2 py-1 rounded h-6 whitespace-nowrap">2018-19</div>
+                                <div>
+                                    <p class="font-medium text-gray-800">Phytoplankton/Zooplankton & Fisheries Sampling</p>
+                                    <p class="text-sm text-gray-500">Hanoi & HCMC</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold mb-4">Research Projects</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">A selection of significant research initiatives and ecosystem monitoring projects.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
+                <!-- Project Cards (Dynamically structured) -->
+                <!-- 1 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all group border-t-4 border-t-primary">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-flask text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">2022–2023</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2 leading-tight">Waste management in shrimp and pangasius farming</h3>
+                    <p class="text-sm text-gray-500 mt-4"><i class="fas fa-tag mr-2"></i>Aquaculture Sustainability</p>
+                </div>
+                <!-- 2 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all group border-t-4 border-t-primary">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-water text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">2022–2023</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2 leading-tight">Aquatic resources management in Dau Tieng Lake</h3>
+                    <p class="text-sm text-gray-500 mt-4"><i class="fas fa-tag mr-2"></i>Resource Management</p>
+                </div>
+                <!-- 3 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all group border-t-4 border-t-primary">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-chart-line text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">2022</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2 leading-tight">Fisheries yield in Lower Mekong Basin</h3>
+                    <p class="text-sm text-gray-500 mt-4"><i class="fas fa-tag mr-2"></i>Yield Assessment</p>
+                </div>
+                <!-- 4 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all group border-t-4 border-t-primary">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-fish text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">2019–2023</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2 leading-tight">Inland fisheries monitoring in Mekong Delta</h3>
+                    <p class="text-sm text-gray-500 mt-4"><i class="fas fa-tag mr-2"></i>Fisheries Monitoring</p>
+                </div>
+                <!-- 5 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all group border-t-4 border-t-primary">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-microscope text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">2018–2023</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2 leading-tight">Fish larvae diversity monitoring</h3>
+                    <p class="text-sm text-gray-500 mt-4"><i class="fas fa-tag mr-2"></i>Biodiversity</p>
+                </div>
+                <!-- 6 -->
+                <div class="bg-white rounded-xl p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-all group border-t-4 border-t-primary">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-leaf text-2xl text-gray-300 group-hover:text-primary transition-colors"></i>
+                        <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded">2021</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2 leading-tight">White-legged shrimp productivity study</h3>
+                    <p class="text-sm text-gray-500 mt-4"><i class="fas fa-tag mr-2"></i>Aquaculture Productivity</p>
+                </div>
+                
+                <!-- Additional projects listed compactly -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-white p-6 rounded-xl border border-gray-100 shadow-sm mt-4">
+                    <h4 class="font-bold text-gray-800 mb-4 border-b pb-2">Other Notable Projects</h4>
+                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-sm text-gray-700">
+                        <li><i class="fas fa-check text-primary mr-2 text-xs"></i>Sustainable shrimp supply chain project (UNDP)</li>
+                        <li><i class="fas fa-check text-primary mr-2 text-xs"></i>Sustainable brackish-water shrimp farming (2017–2021)</li>
+                        <li><i class="fas fa-check text-primary mr-2 text-xs"></i>Tri An reservoir fisheries management & biodiversity</li>
+                        <li><i class="fas fa-check text-primary mr-2 text-xs"></i>Small-scale fisheries co-management model</li>
+                        <li><i class="fas fa-check text-primary mr-2 text-xs"></i>Inland fisheries investigation in Southern Vietnam</li>
+                        <li><i class="fas fa-check text-primary mr-2 text-xs"></i>Sustainable aquaculture through PPP</li>
+                        <li><i class="fas fa-check text-primary mr-2 text-xs"></i>Wild shrimp fishery productivity research</li>
+                        <li><i class="fas fa-check text-primary mr-2 text-xs"></i>Low greenhouse gas shrimp farming model</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold mb-4">Publications & Reports</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 reveal">
+                <!-- Main Articles -->
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-bold mb-6 font-serif border-l-4 border-primary pl-4">Main Articles</h3>
+                    <div class="space-y-6">
+                        <div class="bg-slate-50 p-6 rounded-xl border border-gray-100">
+                            <p class="font-bold text-gray-800 text-lg mb-2 leading-snug">Assessment of the current status of the Pangasiidae family in the lower Mekong River from 2017 to 2019</p>
+                            <p class="text-sm text-gray-500 mb-3">Published: <span class="font-semibold text-gray-700">2020</span></p>
+                            <div class="flex gap-2">
+                                <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Academic Journal</span>
+                                <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded">First Author</span>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-gray-100">
+                            <p class="font-bold text-gray-800 text-lg mb-2 leading-snug">Evaluation of the effectiveness of shrimp farming models in Thoi Binh district, Ca Mau province</p>
+                            <p class="text-sm text-gray-500 mb-3">Published: <span class="font-semibold text-gray-700">2016</span></p>
+                            <div class="flex gap-2">
+                                <span class="bg-primary/10 text-primary text-xs px-2 py-1 rounded">Academic Journal</span>
+                                <span class="bg-gray-200 text-gray-700 text-xs px-2 py-1 rounded">First Author</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mb-6 mt-12 font-serif border-l-4 border-primary pl-4">Co-author Publications</h3>
+                    <ul class="list-disc pl-5 space-y-3 text-gray-700">
+                        <li><strong>Fish Abundance and Diversity Monitoring Regional Report 2018–2022</strong></li>
+                        <li>Shrimp farming cooperative model chain link</li>
+                        <li>Diversity and abundance of larvae and juvenile fish</li>
+                        <li>Giant freshwater prawn rice-shrimp farming experiment</li>
+                    </ul>
+                </div>
+                
+                <!-- Reports -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 font-serif border-l-4 border-gray-800 pl-4">Scientific Reports</h3>
+                    <div class="bg-gray-900 text-white p-6 rounded-xl shadow-lg">
+                        <ul class="space-y-6">
+                            <li class="flex gap-4">
+                                <i class="fas fa-file-pdf text-red-400 text-xl mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Fish Abundance and Diversity Monitoring in the Mekong Delta</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <i class="fas fa-file-pdf text-red-400 text-xl mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Fish Larvae Drift and Juvenile Monitoring</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <i class="fas fa-file-pdf text-red-400 text-xl mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Fisheries Yield at Landscape Scale in Vietnam</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <i class="fas fa-file-pdf text-red-400 text-xl mt-1"></i>
+                                <div>
+                                    <p class="font-medium">Tri An reservoir fisheries management report</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conferences & Awards Section (Combined to save space & balance UI) -->
+    <section id="conferences" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Conferences -->
+                <div class="reveal">
+                    <div class="mb-10">
+                        <h2 class="text-3xl font-bold mb-4">Conferences & Seminars</h2>
+                        <div class="w-16 h-1 bg-primary rounded-full"></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm flex gap-4 items-center hover:border-primary transition-colors">
+                            <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-primary shrink-0">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">The 14th National Conference of Young Fisheries Science</h4>
+                                <p class="text-sm text-gray-500">2025</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm flex gap-4 items-center hover:border-primary transition-colors">
+                            <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-primary shrink-0">
+                                <i class="fas fa-bullhorn text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">National Dissemination Workshop on EHM</h4>
+                                <p class="text-sm text-gray-500">2025</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm flex gap-4 items-center hover:border-primary transition-colors">
+                            <div class="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-primary shrink-0">
+                                <i class="fas fa-handshake text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Fisheries Co-management Workshop & MRC Forum</h4>
+                                <p class="text-sm text-gray-500">2024</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-5 rounded-lg border border-gray-100 shadow-sm flex gap-4 items-center hover:border-primary transition-colors">
+                            <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center text-gray-500 shrink-0">
+                                <i class="fas fa-globe-asia text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Other Notable Events</h4>
+                                <p class="text-sm text-gray-600">Core River Monitoring, Riverine Plastic Monitoring, FAO Smart Aquaculture Project, Multiple Regional Webinars.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards -->
+                <div id="awards" class="reveal">
+                    <div class="mb-10">
+                        <h2 class="text-3xl font-bold mb-4">Honors & Awards</h2>
+                        <div class="w-16 h-1 bg-amber-500 rounded-full"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-6">
+                        <!-- Award Card -->
+                        <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-md relative overflow-hidden">
+                            <div class="absolute -right-6 -top-6 text-amber-100 opacity-50">
+                                <i class="fas fa-trophy text-9xl"></i>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="text-amber-500 mb-3"><i class="fas fa-medal text-3xl"></i></div>
+                                <h4 class="text-xl font-bold text-gray-800 mb-1">Technical Innovation Award</h4>
+                                <p class="text-primary font-medium mb-2">Workplace Achievement</p>
+                                <p class="text-sm text-gray-500">Awarded in 2023 for outstanding technical contributions.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-md relative overflow-hidden">
+                            <div class="absolute -right-6 -top-6 text-green-50 opacity-50">
+                                <i class="fas fa-certificate text-9xl"></i>
+                            </div>
+                            <div class="relative z-10">
+                                <div class="text-primary mb-3"><i class="fas fa-award text-3xl"></i></div>
+                                <h4 class="text-xl font-bold text-gray-800 mb-1">Certificate of Merit</h4>
+                                <p class="text-primary font-medium mb-2">Director of RIA2 & Trade Union Base</p>
+                                <p class="text-sm text-gray-500">Recognized for excellence in 2019, 2021, and 2023.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl font-bold mb-4">Contact Me</h2>
+                <div class="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Feel free to reach out for academic collaborations, research inquiries, or professional networking.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 reveal">
+                <!-- Contact Info -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-gray-100">
+                    <h3 class="text-2xl font-bold mb-8 font-serif">Contact Information</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary shadow-sm shrink-0">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Address</h4>
+                                <p class="text-gray-600">Thoi Binh Commune, Ca Mau Province, Vietnam</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary shadow-sm shrink-0">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Email</h4>
+                                <p class="text-gray-600"><a href="mailto:trangdiemdinh@gmail.com" class="hover:text-primary">trangdiemdinh@gmail.com</a></p>
+                                <p class="text-gray-600"><a href="mailto:dtdiem@mae.gov.vn" class="hover:text-primary">dtdiem@mae.gov.vn</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-primary shadow-sm shrink-0">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Phone</h4>
+                                <p class="text-gray-600"><a href="tel:+84918554389" class="hover:text-primary">+84 918 554 389</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Links Placeholder -->
+                    <div class="mt-10 pt-8 border-t border-gray-200">
+                        <h4 class="font-bold text-gray-800 mb-4">Academic Profiles</h4>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-researchgate"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-lg">
+                    <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted successfully! (This is a static demo)');">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="John Doe" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="john@example.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Research Collaboration" required>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-primaryDark text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2">
+                            Send Message <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8 border-t-4 border-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
+                <div class="text-center md:text-left">
+                    <h2 class="font-serif font-bold text-2xl tracking-wide mb-2 text-white">Dinh Trang Diem</h2>
+                    <p class="text-gray-400 text-sm">Research Scientist in Fisheries Ecology</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
+                    <a href="#publications" class="text-gray-400 hover:text-white transition">Publications</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Dinh Trang Diem. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Designed for Academic Portfolio</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                const icon = btn.querySelector('i');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    const icon = btn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // 2. Sticky Navbar Styling on Scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('nav-scrolled');
+                    navbar.classList.remove('bg-white/90');
+                } else {
+                    navbar.classList.remove('nav-scrolled');
+                    navbar.classList.add('bg-white/90');
+                }
+            });
+
+            // 3. Scroll Reveal Animation
+            const reveals = document.querySelectorAll('.reveal');
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+                reveals.forEach(reveal => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Trigger initially
+
+            // 4. Active Navigation Link Highlight
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.desktop-link');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    // Adjusted offset for sticky header
+                    if (pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-primary', 'font-bold', 'border-primary');
+                    link.classList.add('border-transparent');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.remove('border-transparent');
+                        link.classList.add('text-primary', 'font-bold', 'border-primary');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
